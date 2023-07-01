@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <label for="" class="text-primary text-uppercase">Ingresa los valores para X</label><br>
+            <mat-form-field>
+                <input matInput [(ngModel)]="x1" type="number" placeholder="X1">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="x2" type="number" placeholder="X2">
+            </mat-form-field>
+            <br><br>
+            <label for="" class="text-primary text-uppercase">Ingresa los valores para Y</label><br>
+            <mat-form-field>
+                <input matInput [(ngModel)]="y1" type="number" placeholder="Y1">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="y2" type="number" placeholder="Y2">
+            </mat-form-field>
+            <br>
+            <button (click)="calcular()" mat-raised-button color="primary"> Calcular</button>
+        </div>
+        <div class="col-6">
+            <p class="text-primary text-uppercase h3">El resultado es: {{resultado}}</p>
+        </div>
+    </div>
+</div>

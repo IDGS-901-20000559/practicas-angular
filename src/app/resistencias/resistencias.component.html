@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="" class="form-control">Escoge el color de la primera banda</label>
+                <select class="form-select" aria-label="Primera Banda" [(ngModel)]="banda1">
+                    <option *ngFor="let col1 of colores" [value]="col1.valor">
+                        {{ col1.nombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label for="" class="form-control">Escoge el color de la segunda banda</label>
+                <select class="form-select" aria-label="Segunda Banda" [(ngModel)]="banda2">
+                    <option *ngFor="let op of colores" [value]="op.valor">
+                        {{ op.nombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label for="" class="form-control">Escoge el color de la tercera banda</label>
+                <select class="form-select" aria-label="Tercera Banda" [(ngModel)]="banda3">
+                    <option *ngFor="let op of colores" [value]="op.valor">
+                        {{ op.nombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <label class="h6">Escoge la tolerancia</label>
+        <div class="controls">
+            <div class="col-6">
+                <label for="tolerancia-0" class="h6">Oro 5%</label>
+                <input checked="" name="tolerancia" type="radio" value="1" [(ngModel)]="tolerancia" />
+            </div>
+            <div class="col-6">
+                <label for="tolerancia-1" class="h6">Plata 10%</label>
+                <input checked="" name="tolerancia" type="radio" value="2" [(ngModel)]="tolerancia" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" style="margin-right: 10px" value="btnAgregar"
+                (click)="calcularResistencia()">
+                Calcular Resistencia Ω
+            </button>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="span12">
+            <table class="table text-center table-bordered">
+                <thead>
+                    <tr>
+                        <th> Primera Banda </th>
+                        <th> Segunda Banda </th>
+                        <th> Tercera Banda </th>
+                        <th> Tolerancia </th>
+                        <th> Resistencia </th>
+                        <th> Valor máximo</th>
+                        <th> Valor minimo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td [style.background-color]="colorBanda1"></td>
+                        <td [style.background-color]="colorBanda2"></td>
+                        <td [style.background-color]="colorBanda3"></td>
+                        <td [style.background-color]="colorTolerancia"></td>
+                        <td >{{valorResistencia}} Ohms</td>
+                        <td>{{valorMaximo}} Ohms</td>
+                        <td>{{valorMinimo}} Ohms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

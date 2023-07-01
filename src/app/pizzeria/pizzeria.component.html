@@ -1,0 +1,144 @@
+<div class="container" style="align-content: center; 
+           background-image: url('https://images.unsplash.com/photo-1563305589-3c582d447a99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2061&q=80');
+           background-size: cover;">
+    <h1 class="text-bg-warning text-uppercase">Pizzeria Liru Sisa 🍕</h1>
+    <form [formGroup]="pizzeriaForm" (ngSubmit)="onSubmit()">
+        <div class="row border border-warning border-2">
+            <h3 class="text-warning text-uppercase">Datos del cliente</h3>
+            <div class="col-4 ">
+                <label for="nombreCliente" class="form-label text-white">Nombre</label>
+                <input type="text" id="nombre" name="nombreCliente" required formControlName="nombreCliente"
+                    class="form-control border border-2">
+                <div *ngIf="pizzeriaForm.get('nombreCliente')?.touched && 
+                    pizzeriaForm.get('nombreCliente')?.errors?.['required']" class="alert alert-danger">
+                    <p class="text-danger">Este campo es requerido <i class="fa fa-close"></i></p>
+                </div>
+                <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+                <div *ngIf="pizzeriaForm.get('nombreCliente')?.touched && 
+                    pizzeriaForm.get('nombreCliente')?.errors?.['minlength']" class="alert alert-danger">
+                    <p class="text-danger">El nombre debe contener más de
+                        {{pizzeriaForm.get('nombreCliente')?.errors?.['minlength']?.requiredLength}} caracteres
+                        <i class="fa fa-close"></i>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-4 ">
+                <label for="direccionCliente" class="form-label text-white">Direccion</label>
+                <input type="text" id="direccionCliente" name="direccionCliente" required
+                    formControlName="direccionCliente" class="form-control border border-2">
+                <div *ngIf="pizzeriaForm.get('direccionCliente')?.touched && 
+                    pizzeriaForm.get('direccionCliente')?.errors?.['required']" class="alert alert-danger">
+                    <p class="text-danger">Este campo es requerido <i class="fa fa-close"></i></p>
+                </div>
+                <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+                <div *ngIf="pizzeriaForm.get('direccionCliente')?.touched && 
+                    pizzeriaForm.get('direccionCliente')?.errors?.['minlength']" class="alert alert-danger">
+                    <p class="text-danger">La direccion debe contener más de
+                        {{pizzeriaForm.get('direccionCliente')?.errors?.['minlength']?.requiredLength}} caracteres
+                        <i class="fa fa-close"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 ">
+                <label for="telefonoCliente" class="form-label text-white">Telefono</label>
+                <input type="text" id="telefonoCliente" name="telefonoCliente" required
+                    formControlName="telefonoCliente" class="form-control border border-2">
+                <div *ngIf="pizzeriaForm.get('telefonoCliente')?.touched && 
+                    pizzeriaForm.get('telefonoCliente')?.errors?.['required']" class="alert alert-danger">
+                    <p class="text-danger">Este campo es requerido <i class="fa fa-close"></i></p>
+                </div>
+                <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+                <div *ngIf="pizzeriaForm.get('telefonoCliente')?.touched && 
+                    pizzeriaForm.get('telefonoCliente')?.errors?.['minlength']" class="alert alert-danger">
+                    <p class="text-danger">El telefono debe contener
+                        {{pizzeriaForm.get('telefonoCliente')?.errors?.['minlength']?.requiredLength}} caracteres
+                        <i class="fa fa-close"></i>
+                    </p>
+                </div>
+            </div>
+            <br>
+            <div>
+                <p></p>
+            </div>
+        </div>
+        <hr class="border border-2 border-danger">
+        <div class="row border border-warning border-2">
+            <h3 class="text-warning text-uppercase">Pizza</h3>
+            <div class="col-4 ">
+                <label for="tamanioSel" class="form-label text-white h6">Tamaño</label>
+                <div class="controls">
+                    <div class="col-6">
+                        <input checked="" name="tamanioSel" type="radio" value="0" formControlName="tamanioSel"/>
+                        <label for="tamanioSel-0" class="text-white">Chica $40</label>
+                    </div>
+                    <div class="col-6">
+                        <input name="tamanioSel" type="radio" value="1" formControlName="tamanioSel" />
+                        <label for="tamanioSel-1" class="text-white">Mediana $80</label>
+                    </div>
+                    <div class="col-6">
+                        <input name="tamanioSel" type="radio" value="2" formControlName="tamanioSel" />
+                        <label for="tamanioSel-2" class="text-white"> Grande $120</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 ">
+                <label for="ingredientSel" class="form-label text-white h6">Ingredientes</label>
+                <div class="controls">
+                    <div class="col-6">
+                        <input checked="" name="ingredientSel" type="radio" value="0" formControlName="ingredientSel"/>
+                        <label for="ingredientSel-0" class="text-white">Jamón $10</label>
+                    </div>
+                    <div class="col-6">
+                        <input name="ingredientSel" type="radio" value="1" formControlName="ingredientSel" />
+                        <label for="ingredientSel-1" class="text-white">Piña $10</label>
+                    </div>
+                    <div class="col-6">
+                        <input name="ingredientSel" type="radio" value="2" formControlName="ingredientSel" />
+                        <label for="ingredientSel-2" class="text-white"> Champiñones $10</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 ">
+                <label for="numPizzas" class="form-label text-white">Num. De Pizzas</label>
+                <input type="number" id="numPizzas" name="numPizzas" required
+                    formControlName="numPizzas" class="form-control border border-2">
+                <div *ngIf="pizzeriaForm.get('numPizzas')?.touched && 
+                    pizzeriaForm.get('numPizzas')?.errors?.['required']" class="alert alert-danger">
+                    <p class="text-danger">Este campo es requerido <i class="fa fa-close"></i></p>
+                </div>
+                <div class="d-grid gap-2 col-4 float-end">
+                    <button class="btn btn-warning" type="submit">Guardar <i class="fa fa-save"></i> </button>
+                </div>  
+            </div>
+            <br>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-6">
+            <h1 class="text-primary text-uppercase">Registros <i class="fa fa-users"></i></h1>
+            <hr>
+            <hr>
+             <table class="table table-bordered border border-primary">
+            <thead>
+                <th>Cliente</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Total</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div> 
+</div>
