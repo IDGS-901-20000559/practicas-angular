@@ -1,0 +1,86 @@
+<div class="container" style="align-content: center; 
+           background-image: url('https://wallpapercave.com/wp/wp4016042.jpg');
+           background-size: cover;">
+    <h1 class="text-bg-primary text-uppercase text-white"
+        style="text-align: center; font-family: 'Courier New', Courier, monospace;">Venta de boletos Cinepolis 🎥</h1>
+
+    <form [formGroup]="cineForm" (ngSubmit)="calcularVenta()">
+        <div class="row border border-primary border-2">
+            <!-- <h3 class="text-bg-primary text-uppercase" style="text-align: center;">Datos del cliente</h3> -->
+            <div class="col-8">
+                <br><br>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="text" id="nombreC" name="nombreC" required formControlName="nombreC"
+                            class="form-control border border-2" placeholder="Ingresa tu nombre"
+                            title="El nombre al cual quedaran los boletos reservados">
+                        <!--Validacion de llenado-->
+                        <div *ngIf="cineForm.get('nombreC')?.touched && 
+                        cineForm.get('nombreC')?.errors?.['required']" class="alert alert-danger">
+                            <p class="text-danger">Este campo es requerido <i class="fa fa-close"></i></p>
+                        </div>
+                        <!--Validacion de longitud-->
+                        <div *ngIf="cineForm.get('nombreC')?.touched && 
+                        cineForm.get('nombreC')?.errors?.['minlength']" class="alert alert-danger">
+                            <p class="text-danger">El nombre debe contener más de
+                                {{cineForm.get('nombreC')?.errors?.['minlength']?.requiredLength}} caracteres
+                                <i class="fa fa-close"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <input type="number" id="numPersonas" name="numPersonas" required formControlName="numPersonas"
+                            class="form-control border border-2" placeholder="Numero de personas" min="1"
+                            title="Ingresa el numero de personas que asistiran a la funcion">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="number" id="numBoletos" name="numBoletos" required formControlName="numBoletos" min="1"
+                            class="form-control border border-2" placeholder="¿Cuantos boletos deseas comprar?"
+                            title="¿Cuantos boletos deseas comprar?">
+                    </div>
+                    <div class="col-5">
+                        <br>
+                        <div class="form-check form-switch bg-primary">
+                            <input class="form-check-input" type="checkbox" value="true" id="tarjeta" name="tarjeta"
+                                formControlName="tarjeta">
+                            <label class="form-check-label text-bg-primary" for="tarjeta">¡Tengo mi tarjeta
+                                CineCo!</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" type="button submit">Reservar</button>
+                </div>
+                <br>
+                <div class="alert alert-{{alert}}">
+                    <p class="text-{{alert}}">
+                        {{message}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row border border-2 border-black-50">
+                    <div class="col-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/The_Flash_(film)_poster.jpg/220px-The_Flash_(film)_poster.jpg"
+                            height="300">
+                    </div>
+                    <div class="col-4 bg-primary">
+                        <br>
+                        <hr class="border border-2 border-warning">
+                        <b>
+                            <h4 class="text-bg-primary" style="text-align: center;">The Flash ⚡</h4>
+                        </b>
+                        <hr class="border border-2 border-warning">
+                        <p class="text-bg-primary" style="text-align: center;">Funcion: 8:00 pm</p>
+                        <p class="text-bg-primary" style="text-align: center;">Sala: IMAX</p>
+                        <hr class="border border-2 border-warning">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
